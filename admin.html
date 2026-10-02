@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirmal Prem CMS — Business Management Portal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      background-color: #F8F9FA;
+    }
+    .admin-nav {
+      background-color: #121214;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-tab-btn {
+      padding: 0.85rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 3px solid transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+    .admin-tab-btn.active {
+      color: var(--color-maroon);
+      border-bottom-color: var(--color-maroon);
+      background-color: #fff;
+    }
+    .admin-tab-panel {
+      display: none;
+      padding: 2.5rem 0;
+    }
+    .admin-tab-panel.active {
+      display: block;
+    }
+    .admin-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+    }
+    th {
+      background-color: var(--color-offwhite);
+      font-weight: 700;
+      color: var(--color-text-dark);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ADMIN TOP BAR -->
+  <header class="admin-nav">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 0.1em;">
+        NIRMAL PREM
+      </a>
+      <span style="font-size: 0.75rem; background: var(--color-maroon); color: #fff; padding: 0.2rem 0.6rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.1em;">
+        CMS Portal
+      </span>
+    </div>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <a href="index.html" class="btn btn-secondary btn-sm" style="color: #fff; border-color: rgba(255,255,255,0.4);">
+        ← View Live Website
+      </a>
+      <button id="admin-export-btn" class="btn btn-secondary btn-sm" style="color: #fff; border-color: rgba(255,255,255,0.4);">
+        Export Data (JSON)
+      </button>
+      <button id="admin-reset-btn" class="btn btn-secondary btn-sm" style="color: #dc3545; border-color: #dc3545;">
+        Reset to Defaults
+      </button>
+    </div>
+  </header>
+
+  <!-- ADMIN TABS BAR -->
+  <div style="background-color: #fff; border-bottom: 1px solid var(--color-border); padding: 0 var(--container-padding);">
+    <div class="container" style="display: flex; gap: 1rem;">
+      <button class="admin-tab-btn active" data-target="panel-products">Manage Products</button>
+      <button class="admin-tab-btn" data-target="panel-lookbook">Lookbook Gallery</button>
+      <button class="admin-tab-btn" data-target="panel-offers">Seasonal Offers</button>
+      <button class="admin-tab-btn" data-target="panel-backup">Data Backup & Restore</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- PANEL 1: PRODUCTS -->
+    <section id="panel-products" class="admin-tab-panel active">
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Add New Product / Design</h3>
+        <form id="admin-add-product-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Product Name *</label>
+              <input type="text" name="p_name" class="form-control" placeholder="e.g. Royal Maroon Velvet Lehenga" required>
+            </div>
+            <div class="form-group">
+              <label>Division *</label>
+              <select name="p_division" class="form-control">
+                <option value="Wedding Plaza">Wedding Plaza</option>
+                <option value="DressUp">DressUp</option>
+                <option value="Rental Studio">Rental Studio</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category *</label>
+              <select name="p_category" class="form-control">
+                <option value="Bridal">Bridal</option>
+                <option value="Groom">Groom</option>
+                <option value="Ladies">Ladies</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Rental">Rental</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Purchase / Rental Type *</label>
+              <select name="p_type" class="form-control">
+                <option value="Purchase">Purchase Only</option>
+                <option value="Rental">Rental Only</option>
+                <option value="Purchase & Rental">Purchase & Rental</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Image Path or URL *</label>
+              <input type="text" name="p_image" class="form-control" placeholder="assets/images/hero-slide-1.jpg" required>
+            </div>
+            <div class="form-group">
+              <label>Highlight Badge (Optional)</label>
+              <input type="text" name="p_badge" class="form-control" placeholder="e.g. Masterpiece, Trending, Exclusive">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Product Description *</label>
+            <textarea name="p_desc" class="form-control" rows="3" placeholder="Describe the fabric, embroidery, occasion, and tailoring details..." required></textarea>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="checkbox" name="p_featured" id="p_featured" checked>
+            <label for="p_featured" style="margin-bottom: 0; cursor: pointer;">Feature on Homepage Grid</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">Add Product to Catalog</button>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Active Products in Showroom</h3>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name & ID</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: LOOKBOOK -->
+    <section id="panel-lookbook" class="admin-tab-panel">
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Add Photo to Lookbook</h3>
+        <form id="admin-add-lookbook-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Editorial Title *</label>
+              <input type="text" name="lb_title" class="form-control" placeholder="e.g. The Regal Crimson Bride" required>
+            </div>
+            <div class="form-group">
+              <label>Lookbook Category *</label>
+              <select name="lb_category" class="form-control">
+                <option value="Bridal Edit">Bridal Edit</option>
+                <option value="Groom Edit">Groom Edit</option>
+                <option value="DressUp Edit">DressUp Edit</option>
+                <option value="Rental Edit">Rental Edit</option>
+                <option value="Trending Now">Trending Now</option>
+                <option value="New Arrivals">New Arrivals</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Image Path or URL *</label>
+              <input type="text" name="lb_image" class="form-control" placeholder="assets/images/hero-slide-1.jpg" required>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1.8rem;">
+              <input type="checkbox" name="lb_tall" id="lb_tall">
+              <label for="lb_tall" style="margin-bottom: 0; cursor: pointer;">Display as Tall Masonry Card (Vertical)</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Add to Lookbook</button>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Current Lookbook Photos</h3>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-lookbook-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: OFFERS -->
+    <section id="panel-offers" class="admin-tab-panel">
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Add Seasonal Offer / Announcement</h3>
+        <form id="admin-add-offer-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Offer Title *</label>
+              <input type="text" name="of_title" class="form-control" placeholder="e.g. Wedding Season Bridal Privileges" required>
+            </div>
+            <div class="form-group">
+              <label>Subtitle *</label>
+              <input type="text" name="of_subtitle" class="form-control" placeholder="e.g. Complete Bridal Consultation & Trial" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Banner Image Path *</label>
+              <input type="text" name="of_image" class="form-control" placeholder="assets/images/division-wedding-plaza.jpg" required>
+            </div>
+            <div class="form-group">
+              <label>Validity / Season *</label>
+              <input type="text" name="of_date" class="form-control" placeholder="e.g. Active Wedding Season / Limited Dates" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description *</label>
+            <textarea name="of_desc" class="form-control" rows="3" placeholder="Describe the occasion details, personal fitting privileges..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Publish Offer Announcement</button>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Active Offers</h3>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title & Subtitle</th>
+                <th>Validity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-offers-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: BACKUP & RESTORE -->
+    <section id="panel-backup" class="admin-tab-panel">
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Data Backup & Export</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+          Download all products, lookbook photos, and offers as a single JSON file. You can restore this data anytime.
+        </p>
+        <button id="admin-export-btn-2" class="btn btn-primary" onclick="document.getElementById('admin-export-btn').click()">
+          Download Full Backup (.json)
+        </button>
+      </div>
+
+      <div class="admin-card">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Restore from JSON</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: 1rem;">
+          Paste previously exported JSON content below to restore all products, lookbook, and offers:
+        </p>
+        <textarea id="import-json-area" class="form-control" rows="6" placeholder="Paste JSON here..."></textarea>
+        <div style="margin-top: 1rem;">
+          <button class="btn btn-green" onclick="handleImportJson()">Restore Database</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    function handleImportJson() {
+      const area = document.getElementById('import-json-area');
+      const val = area.value.trim();
+      if (!val) {
+        alert('Please paste valid JSON data.');
+        return;
+      }
+      if (window.NirmalCMS.importData(val)) {
+        alert('Database restored successfully!');
+        window.location.reload();
+      } else {
+        alert('Failed to parse JSON. Please check file format.');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+/* ==========================================================================
+   NIRMAL PREM — WEDDING PLAZA • DRESSUP • RENTAL STUDIO
+   Legacy Since 1948 | Gandhi Gate, Tohana, Haryana
+   Design System & Global Styles
+   ========================================================================== */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rozha+One&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap');
+
+/* --- Root CSS Variables --- */
+:root {
+  /* Brand Primary: Deep Maroon / Royal Crimson */
+  --color-maroon: #680C1D;
+  --color-maroon-dark: #4A0713;
+  --color-maroon-light: #841629;
+  --color-maroon-soft: rgba(104, 12, 29, 0.08);
+
+  /* Brand Secondary: Elegant Forest Green */
+  --color-green: #1B4332;
+  --color-green-dark: #122E22;
+  --color-green-light: #2D5A43;
+  --color-green-soft: rgba(27, 67, 50, 0.08);
+
+  /* Subtle Gold Accents (Used sparingly as hairline/monogram touches) */
+  --color-gold: #C5A880;
+  --color-gold-light: #E0CDB5;
+  --color-gold-dark: #9E7D56;
+
+  /* Neutrals: Pure White + Soft Editorial Tones */
+  --color-white: #FFFFFF;
+  --color-offwhite: #FAF9F6;
+  --color-cream: #F5F3EF;
+  --color-light-grey: #F0EFEB;
+  --color-border: #E8E6E1;
+  --color-charcoal: #2C2C2C;
+  --color-text-dark: #161616;
+  --color-text-muted: #5E5D5A;
+  --color-text-light: #8E8D8A;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-hindi: 'Rozha One', 'Noto Serif Devanagari', serif;
+
+  /* Shadows & Elevation */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.09);
+  --shadow-lift: 0 20px 45px rgba(104, 12, 29, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Container */
+  --container-max: 1360px;
+  --container-narrow: 1100px;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+
+  /* Header Height */
+  --header-height: 90px;
+  --header-compact: 72px;
+}
+
+/* --- Base Reset & Typography --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  line-height: 1.65;
+  overflow-x: hidden;
+  padding-top: var(--header-height);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Typography System --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.headline-hero {
+  font-size: clamp(2.2rem, 5.2vw, 4.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.headline-section {
+  font-size: clamp(1.85rem, 3.8vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.subheadline {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.tagline-hindi {
+  font-family: var(--font-hindi);
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  letter-spacing: 0.02em;
+  color: var(--color-maroon);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-maroon);
+  margin-bottom: 0.85rem;
+}
+
+.eyebrow.green {
+  color: var(--color-green);
+}
+
+.eyebrow.gold {
+  color: var(--color-gold-dark);
+}
+
+.eyebrow.white {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Layout Utility Classes --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section-padding {
+  padding-top: clamp(4rem, 8vw, 7.5rem);
+  padding-bottom: clamp(4rem, 8vw, 7.5rem);
+}
+
+.section-padding-sm {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-offwhite {
+  background-color: var(--color-offwhite);
+}
+
+.bg-maroon {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
+}
+
+.bg-maroon h1, .bg-maroon h2, .bg-maroon h3, .bg-maroon h4 {
+  color: var(--color-white);
+}
+
+.bg-green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.bg-green h1, .bg-green h2, .bg-green h3, .bg-green h4 {
+  color: var(--color-white);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Section Headers --- */
+.section-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-header.text-center .eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+.section-header.text-left p {
+  margin-left: 0;
+}
+
+/* --- Primary Luxury Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
+  border: 1px solid var(--color-maroon);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-maroon-dark);
+  border-color: var(--color-maroon-dark);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(104, 12, 29, 0.25);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-maroon);
+  border: 1px solid var(--color-maroon);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: 1px solid var(--color-green);
+}
+
+.btn-green:hover {
+  background-color: var(--color-green-dark);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(27, 67, 50, 0.25);
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  color: var(--color-maroon);
+  border: 1px solid var(--color-white);
+}
+
+.btn-white:hover {
+  background-color: var(--color-offwhite);
+  color: var(--color-maroon-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--color-white);
+  color: var(--color-maroon);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  border: 1px solid #25D366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+}
+
+.btn-whatsapp:hover {
+  background-color: #1EBE5D;
+  border-color: #1EBE5D;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+}
+
+.btn-sm {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.btn-lg {
+  padding: 1.05rem 2.25rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+}
+
+/* Subtle Link Underline Effect */
+.link-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-maroon);
+  padding-bottom: 2px;
+}
+
+.link-editorial::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+}
+
+.link-editorial:hover::after {
+  transform: scaleX(0.4);
+}
+
+.link-editorial.white {
+  color: var(--color-white);
+}
+
+/* --- Badges --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.badge-maroon {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
+}
+
+.badge-green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.badge-gold {
+  background-color: var(--color-gold);
+  color: var(--color-text-dark);
+}
+
+.badge-rental {
+  background-color: var(--color-green-dark);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-purchase {
+  background-color: var(--color-maroon-dark);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Divider & Accents --- */
+.gold-hairline {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 1.25rem 0;
+}
+
+.gold-hairline.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.maroon-hairline {
+  width: 50px;
+  height: 2px;
+  background-color: var(--color-maroon);
+  margin: 1.25rem 0;
+}
+
+.maroon-hairline.center {
+  margin-left: auto;
+  margin-right: auto;
+}

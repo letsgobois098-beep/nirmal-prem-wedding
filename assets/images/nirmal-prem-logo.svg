@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 90" width="460" height="90">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap');
+      .brand-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        fill: #680C1D;
+      }
+      .brand-sub {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        fill: #1B4332;
+        text-transform: uppercase;
+      }
+      .brand-est {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        fill: #9E7D56;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  
+  <!-- Royal Monogram Seal -->
+  <g transform="translate(10, 10)">
+    <circle cx="35" cy="35" r="33" fill="none" stroke="#680C1D" stroke-width="1.8" />
+    <circle cx="35" cy="35" r="30" fill="none" stroke="#C5A880" stroke-width="0.8" stroke-dasharray="2,2" />
+    <text x="35" y="44" font-family="'Playfair Display', serif" font-size="24" font-weight="700" fill="#680C1D" text-anchor="middle">NP</text>
+  </g>
+
+  <!-- Typography Block -->
+  <text x="96" y="38" class="brand-title">NIRMAL PREM</text>
+  <text x="98" y="58" class="brand-sub">WEDDING PLAZA • DRESSUP • RENTAL STUDIO</text>
+  <text x="98" y="74" class="brand-est">ESTABLISHED 1948 • GANDHI GATE, TOHANA</text>
+</svg>
