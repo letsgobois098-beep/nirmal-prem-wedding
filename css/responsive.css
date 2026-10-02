@@ -103,6 +103,11 @@
   .modal-content-wrap {
     padding: 2rem 1.5rem;
   }
+
+  .map-container {
+    height: 320px;
+    margin-bottom: 1.5rem;
+  }
 }
 
 /* --- Mobile Landscape & Small Tablets (max-width: 767px) --- */
@@ -149,13 +154,57 @@
     display: none;
   }
 
+  /* --- Mobile Framing for Models & Images --- */
+  .hero-slide-bg {
+    background-position: center 18%;
+  }
+
+  .collection-card-img,
+  .product-card-img-wrap img,
+  .lookbook-item img,
+  .division-image-wrap img,
+  .legacy-image-wrap img {
+    object-position: center top;
+  }
+
+  /* Prevent side wobbles & ensure clean viewport flow */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Prevent iOS automatic zoom on text inputs */
+  .form-control,
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
   .hero-slider-section {
-    height: calc(100vh - var(--header-height));
-    min-height: 520px;
+    height: calc(100svh - var(--header-height));
+    min-height: 500px;
+    max-height: 700px;
   }
 
   .hero-content {
-    padding-bottom: 5.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .hero-controls {
@@ -225,15 +274,25 @@
     padding: 1.75rem 1.25rem;
   }
 
+  /* --- Mobile-Friendly Google Maps Container --- */
+  .map-container {
+    height: 260px;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
   .floating-actions {
-    bottom: 1.25rem;
-    right: 1rem;
-    gap: 0.65rem;
+    bottom: 1rem;
+    right: 0.85rem;
+    gap: 0.5rem;
   }
 
   .floating-btn {
-    padding: 0.7rem 1.15rem;
+    padding: 0.65rem 1rem;
     font-size: 0.75rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   }
 
   .footer-top {
@@ -251,7 +310,7 @@
 /* --- Specific Mobile Targets (360px - 430px) --- */
 @media (max-width: 430px) {
   .headline-hero {
-    font-size: 1.95rem;
+    font-size: 1.75rem;
   }
 
   .collections-grid-8 {
@@ -259,11 +318,22 @@
   }
 
   .collection-card-item {
-    height: 300px;
+    height: 280px;
+  }
+
+  .brand-identity {
+    gap: 0.6rem;
+  }
+
+  .brand-logo-img {
+    height: 34px;
+    width: 34px;
+    min-width: 34px;
   }
 
   .brand-name {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
   }
 
   .brand-divisions {
@@ -277,5 +347,23 @@
 
   .header-ctas .btn-header-wa span {
     display: none;
+  }
+
+  /* Compact Map size on small phone screens */
+  .map-container {
+    height: 220px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .floating-actions {
+    bottom: 0.75rem;
+    right: 0.65rem;
+    gap: 0.45rem;
+  }
+
+  .floating-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.7rem;
   }
 }
