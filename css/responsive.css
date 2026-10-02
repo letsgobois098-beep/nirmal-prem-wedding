@@ -108,6 +108,17 @@
     height: 320px;
     margin-bottom: 1.5rem;
   }
+
+  .editorial-split-grid,
+  .split-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .editorial-image-wrap,
+  .split-grid-image-wrap {
+    height: 420px;
+  }
 }
 
 /* --- Mobile Landscape & Small Tablets (max-width: 767px) --- */
@@ -288,6 +299,23 @@
     gap: 0.5rem;
   }
 
+  .editorial-split-grid,
+  .split-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .editorial-image-wrap,
+  .split-grid-image-wrap {
+    height: clamp(280px, 45vh, 360px);
+    border-radius: 8px;
+  }
+
+  .editorial-image-wrap img,
+  .split-grid-image-wrap img {
+    object-position: center 20%;
+  }
+
   .floating-btn {
     padding: 0.65rem 1rem;
     font-size: 0.75rem;
@@ -365,5 +393,10 @@
   .floating-btn {
     padding: 0.55rem 0.85rem;
     font-size: 0.7rem;
+  }
+
+  .editorial-image-wrap,
+  .split-grid-image-wrap {
+    height: 290px;
   }
 }
